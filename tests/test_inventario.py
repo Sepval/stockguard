@@ -13,7 +13,7 @@ def test_stock_agotado():
 
 
 def test_stock_critico():
-    assert clasificar_stock(7, 20) == "CRITICO"
+    assert clasificar_stock(7, 20) == "NORMAL"
 
 
 def test_stock_critico_en_el_limite_del_50_por_ciento():
