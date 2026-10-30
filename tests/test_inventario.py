@@ -4,6 +4,7 @@ from src.inventario import (
     clasificar_stock,
     detectar_sobrestock,
     porcentaje_inventario,
+    calcular_stock_faltante,
 )
 
 
@@ -109,3 +110,11 @@ def test_porcentaje_stock_minimo_cero_es_invalido():
 def test_porcentaje_stock_minimo_negativo_es_invalido():
     with pytest.raises(ValueError, match="stock minimo"):
         porcentaje_inventario(10, -5)
+
+def test_calcular_stock_faltante():
+    # Escenario 1: El stock actual es menor que el objetivo (faltan unidades)
+    assert calcular_stock_faltante(5, 10) == 5
+    
+    # Escenario 2: El stock actual es igual o mayor que el objetivo (no falta nada)
+    assert calcular_stock_faltante(15, 10) == 0
+    assert calcular_stock_faltante(10, 10) == 0
