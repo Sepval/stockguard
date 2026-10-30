@@ -31,3 +31,11 @@ def porcentaje_inventario(stock_actual: int, stock_minimo: int) -> float:
     if stock_minimo <= 0:
         raise ValueError("El stock minimo debe ser mayor que cero")
     return round(stock_actual / stock_minimo * 100, 2)
+
+def calcular_stock_faltante(stock_actual, stock_objetivo):
+    """Calcula cuántas unidades faltan para alcanzar el stock objetivo.
+    Si el stock actual ya alcanza o supera el objetivo, retorna 0.
+    """
+    if stock_actual >= stock_objetivo:
+        return 0
+    return stock_objetivo - stock_actual
